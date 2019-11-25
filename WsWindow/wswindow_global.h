@@ -1,0 +1,12 @@
+#ifndef WSWINDOW_GLOBAL_H
+#define WSWINDOW_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(WSWINDOW_LIBRARY)
+#  define WSWINDOWSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define WSWINDOWSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // WSWINDOW_GLOBAL_H

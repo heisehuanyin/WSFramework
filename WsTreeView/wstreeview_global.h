@@ -1,0 +1,12 @@
+#ifndef WSTREEVIEW_GLOBAL_H
+#define WSTREEVIEW_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(WSTREEVIEW_LIBRARY)
+#  define WSTREEVIEWSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define WSTREEVIEWSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // WSTREEVIEW_GLOBAL_H
