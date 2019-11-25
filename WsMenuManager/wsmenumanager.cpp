@@ -1,9 +1,10 @@
 #include "wsmenumanager.h"
+#include "newdialog.h"
 
 #include <QFileDialog>
 
 WsMenuManager::WsMenuManager()
-    :file_new(new QMenu("新建文件")),
+    :file_new(new QAction("新建文件")),
       file_groups(new QAction("组织集合")),
       file_append(new QAction("添加文件")),
       file_save(new QMenu("保存文件")),
@@ -18,7 +19,7 @@ WsMenuManager::WsMenuManager()
       exit(new QAction("退出"))
 {
     auto files = new QMenu(tr("文件"));
-    files->addMenu(file_new);
+    files->addAction(file_new);
     files->addAction(file_groups);
     files->addAction(file_append);
     files->addSeparator();
@@ -51,6 +52,9 @@ WsMenuManager::WsMenuManager()
     menus.append(plugins);
     menus.append(views);
     menus.append(help);
+
+    // 新建文件关联
+    connect(file_new,       &QAction::triggered,this,   &WsMenuManager::files_fileNew);
 
     // 新建项目动作
     connect(project_new,    &QMenu::triggered,  this,   &WsMenuManager::files_projectNew);
@@ -124,8 +128,6 @@ void WsMenuManager::registerAction(QAction *action, Plugin::Base *host)
 
 void WsMenuManager::menuActive(const QList<Plugin::Base *> &actived_set)
 {
-    this->refreshFilesMenu();
-
     // 插件注册菜单
     for (auto plugin : actived_stack) {
         if(!actions_map.contains(plugin))
@@ -146,6 +148,9 @@ void WsMenuManager::menuActive(const QList<Plugin::Base *> &actived_set)
             item.second->addAction(item.first);
         }
     }
+
+    // 通用菜单刷新
+    this->refreshFilesMenu();
 }
 
 void WsMenuManager::removeRelatedMenus(Plugin::Base *plugin) {
@@ -156,6 +161,13 @@ void WsMenuManager::removeRelatedMenus(Plugin::Base *plugin) {
     actions_map.remove(plugin);
     delete list;
     actived_stack.removeAll(plugin);
+}
+
+void WsMenuManager::files_fileNew()
+{
+    auto rootPath = visual->activedProjectRootPath();
+    auto pjt = visual->getProject(rootPath);
+    NewDialog(pjt, visual->getWindow()->getWidget()).exec();
 }
 
 void WsMenuManager::files_projectNew(QAction *act)
@@ -203,12 +215,8 @@ void WsMenuManager::files_projectClose(QAction *act)
 void WsMenuManager::refreshFilesMenu()
 {
     // 新建文件模板刷新
-    QDir tfile(visual->schedule()->getTemplates_path());
+    QDir tfile(visual->schedule()->getTemplatesPath());
     auto list = tfile.entryInfoList(QDir::Files);
-    file_new->clear();
-    for (auto fname : list) {
-        file_new->addAction(fname.fileName());
-    }
 
     // 新建项目刷新
     project_new->clear();

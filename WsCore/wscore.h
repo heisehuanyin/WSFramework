@@ -27,7 +27,7 @@ public:
 
     virtual Plugin::ConfigPort *globalConfigPort() const override;
     virtual QList<QString> allProjectsType() const override;
-    QString getTemplates_path() const override;
+    QString getTemplatesPath() const override;
 
     // Base interface
 public:

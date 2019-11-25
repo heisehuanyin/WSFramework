@@ -25,9 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        newdialog.cpp \
         wsmenumanager.cpp
 
 HEADERS += \
+        newdialog.h \
         wsmenumanager.h \
         wsmenumanager_global.h 
 
@@ -35,3 +37,6 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+DISTFILES += \
+    CodeStyle.md

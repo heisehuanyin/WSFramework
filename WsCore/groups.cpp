@@ -236,6 +236,17 @@ void PGroup::closeFile(Core::Group::File *file)
 
 }
 
+QList<const FileGenerate *> PGroup::allGenerators() const
+{
+    return QList<const FileGenerate*>();
+}
+
+void PGroup::newFile(const QString &parentDir, const QString &plgName,
+                     const QHash<QString, QString> &xargs)
+{
+
+}
+
 VGroup::VGroup(Schedule *core, PluginsManager *plgsm)
     :core_schedule(core), plgs_mgr(plgsm), tree(new ProjectTree(this)),
       menu_mgr(nullptr), window(nullptr), actived_project(nullptr)
@@ -341,7 +352,7 @@ QList<QString> VGroup::aliveProjects() const{
     return alives;
 }
 
-QString VGroup::activedProject() const{
+QString VGroup::activedProjectRootPath() const{
     if(actived_project != nullptr)
         return actived_project->projectRootPath();
     else
@@ -502,7 +513,7 @@ QVariant ProjectTree::data(const QModelIndex &index, int role) const{
     auto ptr = index.internalPointer();
     auto real = static_cast<Core::Items::DataPath*>(ptr);
 
-    auto pjt_identifer = visual_group->activedProject();
+    auto pjt_identifer = visual_group->activedProjectRootPath();
     auto pjt_ins = visual_group->getProject(pjt_identifer);
     if(role == Qt::BackgroundRole && pjt_ins &&
        real == pjt_ins->projectManager()->description())

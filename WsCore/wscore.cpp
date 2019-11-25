@@ -142,7 +142,7 @@ QList<QString> WsCore::allProjectsType() const
     return all;
 }
 
-QString WsCore::getTemplates_path() const
+QString WsCore::getTemplatesPath() const
 {
     return templates_path;
 }

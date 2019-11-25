@@ -29,7 +29,7 @@ namespace Plugin {
         // global
         virtual Plugin::ConfigPort *globalConfigPort() const = 0;
         virtual QList<QString> allProjectsType() const = 0;
-        virtual QString getTemplates_path() const = 0;
+        virtual QString getTemplatesPath() const = 0;
     };
 }
 

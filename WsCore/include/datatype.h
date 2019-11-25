@@ -15,6 +15,7 @@ namespace Plugin {
     class MenuManager;
     class Independent;
     class EnhancePlugin;
+    class FileGenerate;
 }
 
 namespace Core {
@@ -173,6 +174,9 @@ namespace Core {
             virtual Plugin::LogWriter *logWriter() const = 0;
             virtual Plugin::ConfigPort *configPort() const = 0;
             virtual QList<Plugin::Base*> getEnhancePlugins() const = 0;
+            virtual QList<const Plugin::FileGenerate*> allGenerators() const = 0;
+            virtual void newFile(const QString &parentDir,const QString &plgName,
+                                 const QHash<QString,QString> &xargs) = 0;
 
             virtual QString projectRootPath() const = 0;
             /**
@@ -247,7 +251,7 @@ namespace Core {
              * @brief 获取处于唯一激活位置的项目
              * @return 项目路径
              */
-            virtual QString activedProject() const = 0;
+            virtual QString activedProjectRootPath() const = 0;
 
             /**
              * @brief 通过项目路径，获取关联活跃项目

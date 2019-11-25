@@ -89,7 +89,7 @@ void WsWindow::showProjectManagerMenu(const QPoint &point)
     ngroup->setDisabled(dpath->isLeaf());
 
     auto m = contex.addMenu("新建文件");
-    QDir temp(visual->schedule()->getTemplates_path());
+    QDir temp(visual->schedule()->getTemplatesPath());
     auto list = temp.entryInfoList(QDir::Files);
     for (auto item : list) { m->addAction(item.fileName()); }
     connect(m,  &QMenu::triggered,  this,   &WsWindow::newItemNode);

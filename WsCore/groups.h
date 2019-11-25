@@ -80,6 +80,12 @@ public:
     virtual void saveTarget() override;
     virtual void saveFile(Core::Group::File *file) override;
     virtual void closeFile(Core::Group::File *file) override;
+
+    // Project interface
+public:
+    virtual QList<const Plugin::FileGenerate *> allGenerators() const override;
+    virtual void newFile(const QString &parentDir, const QString &plgName,
+                         const QHash<QString, QString> &xargs) override;
 };
 
 
@@ -145,7 +151,7 @@ public:
     virtual Core::Group::Project *openProject(const QString &project_file) override;
     virtual Core::Group::Project *newProject(const QString &plugin, const QString &project_root_path) override;
     virtual QList<QString> aliveProjects() const override;
-    virtual QString activedProject() const override;
+    virtual QString activedProjectRootPath() const override;
     virtual Core::Group::Project *getProject(const QString &project_dir) const override;
     virtual void activeProject(Core::Group::Project *project) override;
     virtual QAbstractItemModel *getProjectsTree() const override;

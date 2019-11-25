@@ -44,7 +44,7 @@ private:
 
 
     // 新建项目
-    void files_fileNew(QAction *act){}
+    void files_fileNew();
     void files_fileOpen(){}
     void files_fileSave(QAction *act){}
     void files_fileClose(QAction *act){}
@@ -55,7 +55,7 @@ private:
     void files_projectClose(QAction *act);
 
     // file-menus================
-    QMenu *const file_new;
+    QAction *const file_new;
     QAction *const file_groups;
     QAction *const file_append;
     QMenu *const file_save;

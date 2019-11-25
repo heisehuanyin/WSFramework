@@ -34,6 +34,7 @@ HEADERS += \
         include/configport.h \
         include/datatype.h \
         include/enhanceplugin.h \
+        include/filegenerate.h \
         include/foundation.h \
         include/independent.h \
         include/itemspresent.h \
