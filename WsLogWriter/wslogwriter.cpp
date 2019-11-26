@@ -18,18 +18,6 @@ WsLogWriter::~WsLogWriter() {
         delete fileout;
 }
 
-void WsLogWriter::argumentsConfigure(const QHash<QString, QString> &)
-{}
-
-QList<QString> WsLogWriter::configItems() const
-{
-    return QList<QString>();
-}
-
-QPair<Configure::ArgsType, QList<QString> > WsLogWriter::ArgumentInfo(const QString &) const
-{
-    return qMakePair(ArgsType::STRING_INPUT, QList<QString>());
-}
 
 QString WsLogWriter::registerName() const
 {

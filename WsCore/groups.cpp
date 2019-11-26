@@ -236,13 +236,12 @@ void PGroup::closeFile(Core::Group::File *file)
 
 }
 
-QList<const FileGenerate *> PGroup::allGenerators() const
+QList<const FileGenerator *> PGroup::allGenerators() const
 {
-    return QList<const FileGenerate*>();
+    return QList<const FileGenerator*>();
 }
 
-void PGroup::newFile(const QString &parentDir, const QString &plgName,
-                     const QHash<QString, QString> &xargs)
+void PGroup::newFileWithin(const QString &parentDir, const QString &plgName, const QHash<QString, QString> &xargs)
 {
 
 }

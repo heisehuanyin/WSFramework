@@ -1,7 +1,7 @@
 #include "newdialog.h"
 #include "../WsCore/include/schedule.h"
 #include "../WsCore/include/foundation.h"
-#include "../WsCore/include/filegenerate.h"
+#include "../WsCore/include/filegenerator.h"
 
 #include <QDir>
 #include <QGridLayout>
@@ -58,7 +58,14 @@ void NewDialog::_toptype_selection(int index)
                 auto allg = project_base->allGenerators();
                 file_type->clear();
                 for (auto g : allg) {
-                    auto item = g->registerName()+":"+g->typeName()+"(*."+g->suffix()+")";
+                    QString item = g->registerName() + ":" + g->typeName() + "(";
+
+                    auto x = g->suffixes();
+                    for(auto i : x){
+                        item += "*." + i + ",";
+                    }
+                    item = item.mid(0, item.length()-1) + ")";
+
                     file_type->addItem(item, g->registerName());
                 }
             }break;

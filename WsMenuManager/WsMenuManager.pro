@@ -38,5 +38,4 @@ unix {
     INSTALLS += target
 }
 
-DISTFILES += \
-    CodeStyle.md
+DISTFILES +=

@@ -11,7 +11,7 @@ namespace Plugin {
      * 1.提供项目和项目内条目管理，
      * 2.提供简单的key-value配置功能
      */
-    class ProjectManager : public Base, public Configure
+    class ProjectManager : public Base
     {
     public:
         virtual ~ProjectManager() = default;

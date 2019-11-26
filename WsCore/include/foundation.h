@@ -14,6 +14,7 @@ namespace Plugin{
         INDEPENDENTTOOLS,       // 独立功能插件
         PROJECTMANAGER,         // 项目管理器
         PROJECTENHANCE,         // 项目增强插件
+        PROJECTFILEGEN,         // 文件生成器
 
         BINARYPRESENT,          // 二进制处理模块
         TEXTPRESENT,            // 文字处理模块
@@ -72,9 +73,10 @@ namespace Plugin{
          * @brief 重新配置插件，改变插件行为
          * @param xargs
          */
-        virtual void argumentsConfigure(const QHash<QString,QString> &xargs) = 0;
+        virtual void argsConfigure(const QHash<QString,QString> &xargs) = 0;
         virtual QList<QString> configItems() const = 0;
-        virtual QPair<ArgsType,QList<QString>> ArgumentInfo(const QString &name) const = 0;
+        virtual QString argumentValue(const QString &value) const = 0;
+        virtual QPair<ArgsType,QList<QString>> argumentInfo(const QString &name) const = 0;
     };
 }
 

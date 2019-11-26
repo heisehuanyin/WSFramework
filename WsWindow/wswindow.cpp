@@ -109,12 +109,12 @@ void WsWindow::newGroupNode()
 {
     auto index = project_view->currentIndex();
     auto path = visual->nodeConvert(index);
-    static_cast<Plugin::ProjectManager*>(path->model())->newGroup(path);
+    auto model = static_cast<Plugin::ProjectManager*>(path->model());
+    model->newGroup(path, "新建集合", model->getFilePath(path));
 }
 
 void WsWindow::newItemNode(QAction *item)
 {
-
 }
 
 void WsWindow::appendItemNode()

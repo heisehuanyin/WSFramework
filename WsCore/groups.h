@@ -83,8 +83,8 @@ public:
 
     // Project interface
 public:
-    virtual QList<const Plugin::FileGenerate *> allGenerators() const override;
-    virtual void newFile(const QString &parentDir, const QString &plgName,
+    virtual QList<const Plugin::FileGenerator *> allGenerators() const override;
+    virtual void newFileWithin(const QString &parentDir, const QString &plgName,
                          const QHash<QString, QString> &xargs) override;
 };
 

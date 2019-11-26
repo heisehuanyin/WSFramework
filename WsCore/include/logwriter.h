@@ -4,7 +4,7 @@
 #include "schedule.h"
 
 namespace Plugin {
-    class LogWriter : public Base, public Configure
+    class LogWriter : public Base
     {
     public:
         virtual ~LogWriter() = default;

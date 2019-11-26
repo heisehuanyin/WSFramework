@@ -154,17 +154,6 @@ WsProjectManager::~WsProjectManager(){
     if(root) delete root;
 }
 
-void WsProjectManager::argumentsConfigure(const QHash<QString, QString> &){
-
-}
-
-QList<QString> WsProjectManager::configItems() const{
-    return QList<QString>();
-}
-
-QPair<Plugin::Configure::ArgsType, QList<QString> > WsProjectManager::ArgumentInfo(const QString &) const{
-    return QPair<ArgsType, QList<QString>>();
-}
 
 QString WsProjectManager::registerName() const{
     return "WsProjectManager";

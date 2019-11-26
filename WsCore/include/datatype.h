@@ -15,7 +15,7 @@ namespace Plugin {
     class MenuManager;
     class Independent;
     class EnhancePlugin;
-    class FileGenerate;
+    class FileGenerator;
 }
 
 namespace Core {
@@ -174,9 +174,10 @@ namespace Core {
             virtual Plugin::LogWriter *logWriter() const = 0;
             virtual Plugin::ConfigPort *configPort() const = 0;
             virtual QList<Plugin::Base*> getEnhancePlugins() const = 0;
-            virtual QList<const Plugin::FileGenerate*> allGenerators() const = 0;
-            virtual void newFile(const QString &parentDir,const QString &plgName,
-                                 const QHash<QString,QString> &xargs) = 0;
+
+            virtual QList<const Plugin::FileGenerator*> allGenerators() const = 0;
+            virtual void newFileWithin(const QString &plgName, const QString &parentDir,
+                    const QHash<QString,QString> &xargs = QHash<QString,QString>()) = 0;
 
             virtual QString projectRootPath() const = 0;
             /**

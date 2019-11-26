@@ -18,12 +18,6 @@ public:
     WsLogWriter();
     virtual ~WsLogWriter() override;
 
-    // Configure interface
-public:
-    virtual void argumentsConfigure(const QHash<QString,QString> &xargs) override;
-    virtual QList<QString> configItems() const override;
-    virtual QPair<ArgsType, QList<QString> > ArgumentInfo(const QString &name) const override;
-
     // Base interface
 public:
     virtual QString registerName() const override;
