@@ -5,7 +5,6 @@
 
 using namespace Plugin;
 
-
 FGroup::FGroup(const QString &filePath, PluginsManager *mgr, Core::Group::Project *pjt)
     :project_group(pjt), plugins_mgr(mgr), target_file(filePath){}
 
