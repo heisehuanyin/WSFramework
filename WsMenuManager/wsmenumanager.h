@@ -6,7 +6,7 @@
 #include "../WsCore/include/window.h"
 
 class WSMENUMANAGERSHARED_EXPORT WsMenuManager
-        :public QObject, public Plugin::MenuManager
+        : public QObject, public Plugin::MenuManager
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID PLUGINMENUMANAGER)
